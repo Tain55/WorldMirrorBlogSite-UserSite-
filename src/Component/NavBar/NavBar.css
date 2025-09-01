@@ -1,0 +1,33 @@
+/* Navbar main background */
+.navbar-custom {
+  background-color: #808080 !important;
+}
+
+/* Dropdown toggle text color */
+.navbar-custom .dropdown-toggle {
+  color: white !important;
+  background-color: #808080 !important; /* optional, if you want bg for button */
+}
+
+/* Dropdown menu background & text color */
+.navbar-custom .dropdown-menu {
+  background-color: #808080 !important;
+}
+
+.navbar-custom .dropdown-item {
+  color: white !important;
+}
+
+/* Hover effect on dropdown items */
+.navbar-custom .dropdown-item:hover {
+  background-color: #666666 !important;
+  color: rgb(248, 255, 38) !important;
+}
+
+.navbar-custom .nav-link {
+  color: white !important;
+}
+
+.navbar-custom .nav-link:hover {
+  color: rgb(248, 255, 38) !important;
+}
