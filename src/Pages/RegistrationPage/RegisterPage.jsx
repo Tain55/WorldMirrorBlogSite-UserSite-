@@ -4,31 +4,49 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import AuthUser from "./../../Component/Auth/AuthUser";
 
-const LoginPage = () => {
-  const { http, setToken } = AuthUser();
+const RegisterPage = () => {
+  const { http } = AuthUser();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setconfirmPassword] = useState();
 
   const submitForm = (e) => {
     e.preventDefault(); //page reload hobe na
     http
-      .post("auth/login", { email, password })
+      .post("auth/register", {
+        name,
+        email,
+        password,
+        password_confirmation: confirmPassword,
+      })
       .then((res) => {
         console.log(res.data);
-        setToken(res.data.user, res.data.access_token);
-        alert("You are logged in.");
+        alert("Sucessfully registered");
       })
       .catch((err) => {
-        console.error("Login error:", err.response?.data || err.message);
-        alert("Login Failed!");
+        console.log(
+          "Registration error data:",
+          JSON.stringify(err.response?.data, null, 2)
+        );
+        alert("Registration Faield.");
       });
   };
 
   return (
     <Container className="mt-3">
-      <h1 className="mb-3">Login Form</h1>
+      <h1 className="mb-3">Registration Form</h1>
       <form>
         <div className="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter your name"
+            onChange={(e) => setName(e.target.value)}
+          />
           <label>Email address</label>
           <input
             type="email"
@@ -54,6 +72,17 @@ const LoginPage = () => {
           />
         </div>
 
+        <div className="form-group">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Confirm Password"
+            onChange={(e) => setconfirmPassword(e.target.value)}
+          />
+        </div>
+
         <div className="form-check">
           <input
             type="checkbox"
@@ -71,4 +100,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

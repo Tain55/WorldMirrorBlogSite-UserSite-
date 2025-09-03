@@ -31,3 +31,12 @@
 .navbar-custom .nav-link:hover {
   color: rgb(248, 255, 38) !important;
 }
+
+.navbar-custom .texttt{
+  color: #aeed26 !important;
+}
+.navbar-custom .texttt:hover {
+  background: #aeed26 !important;
+  color: #2b2b2b !important;
+}
+
