@@ -64,7 +64,7 @@ function NavBar() {
 
             {getToken() && (
               <Nav.Link as={Link} to="/profile">
-                Profile
+                My Profile
               </Nav.Link>
             )}
 

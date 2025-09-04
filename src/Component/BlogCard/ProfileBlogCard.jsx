@@ -3,11 +3,25 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 // import Row from "react-bootstrap/Row"; // সরাসরি react-bootstrap থেকে import করলাম
 import "../BlogCard/BlogCard.css";
+import BlogService from "./../BlogService/BlogService";
 
 // eslint-disable-next-line react/prop-types
-function ProfileBlogCard({ title, description, imageUrl, url }) {
+function ProfileBlogCard({ title, description, imageUrl, slug }) {
+  const { deleteblog } = BlogService();
   const defaultImage =
     "https://www.thewall360.com/uploadImages/ExtImages/images1/def-638240706028967470.jpg";
+
+  const handleDelete = () => {
+    deleteblog(slug)
+      .then(() => {
+        alert("Blog Deleted Successfully!");
+        window.location.reload(); //j page ache seta refresh hobe;
+      })
+      .catch((err) => {
+        console.error("Faild to delete blog: ", err);
+        alert("Failed to delete blog");
+      });
+  };
 
   return (
     <Card
@@ -41,7 +55,9 @@ function ProfileBlogCard({ title, description, imageUrl, url }) {
         <Button variant="primary" className="mb-2">
           Edit
         </Button>
-        <Button variant="danger">Delete</Button>
+        <Button onClick={handleDelete} variant="danger">
+          Delete
+        </Button>
       </div>
     </Card>
   );

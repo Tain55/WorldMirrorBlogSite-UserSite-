@@ -7,6 +7,7 @@ import ProfileBlogCard from "./../../Component/BlogCard/ProfileBlogCard";
 import BlogService from "./../../Component/BlogService/BlogService";
 import { useState } from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const ProfilePage = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,14 +16,16 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getYourBlog(user.id)
-      .then((res) => setBlogs(res.data))
+      .then((res) => {
+        console.log("API response:", res.data); // এখানে দেখো কী আসছে
+        setBlogs(res.data);
+      })
       .catch((err) => {
         console.error("Error fetching blogs:", err);
-        alert("Faield ot fetch your blogs.");
+        alert("Failed to fetch your blogs.");
       })
       .finally(() => setLoading(false));
   }, []);
-
   return (
     <div>
       <div className="d-flex">
@@ -61,7 +64,26 @@ const ProfilePage = () => {
         {/* right side */}
 
         <Container className="p-4">
-          <p style={{ fontWeight: "bold", fontSize: "27px" }}>Your Blogs</p>
+          <div className="d-flex justify-content-between">
+            <p style={{ fontWeight: "bold", fontSize: "27px" }}>My Blogs</p>
+            <Link to="/writing-blog">
+              <button
+                className="btn"
+                style={{
+                  background: "#1e90ff",
+                  color: "white",
+                  padding: "10px 20px",
+                  fontSize: "16px",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
+                  transition: "all 0.2s",
+                }}
+              >
+                Write a Blog
+              </button>
+            </Link>
+          </div>
           <div
             style={{
               maxHeight: "80vh",
@@ -70,8 +92,49 @@ const ProfilePage = () => {
             }}
             className="d-flex flex-column gap-3"
           >
-            {blogs.length === 0 ? (
-              <p>You did not write any blog</p>
+            {loading ? (
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: "20px",
+                  marginTop: "50px",
+                  color: "green",
+                }}
+              >
+                Contents are loading...
+              </p>
+            ) : blogs.length === 0 ? (
+              <div className="d-flex align-items-center flex-column">
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    marginTop: "50px",
+                    color: "#555555",
+                  }}
+                >
+                  You haven’t shared any blogs yet! ✍️
+                  <br />
+                  Click the button above to write your first amazing blog.
+                </p>
+                <Link to="/writing-blog">
+                  <button
+                    className="btn"
+                    style={{
+                      background: "#1e90ff",
+                      color: "white",
+                      padding: "10px 20px",
+                      fontSize: "16px",
+                      borderRadius: "8px",
+                      fontWeight: "bold",
+                      boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    Write a Blog
+                  </button>
+                </Link>
+              </div>
             ) : (
               <div className="d-flex flex-column gap-2">
                 {blogs.map((blog) => (
@@ -80,6 +143,7 @@ const ProfilePage = () => {
                       title={blog.title}
                       description={blog.content}
                       imageUrl={blog.image}
+                      slug={blog.slug}
                       // url={`blog/${blog.slug}`}
                     />
                   </Col>

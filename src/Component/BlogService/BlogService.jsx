@@ -8,7 +8,7 @@ export default function BlogService() {
     headers: {
       "Content-Type": "application/json",
       // Authorization header direct sessionStorage theke
-      // Authorization: `Bearer ${getToken()}`,
+      Authorization: `Bearer ${getToken()}`,
       // ekhane authenticaion hobe na, eta jokhon post kora hocche useEffect e gie hobe
     },
   });
@@ -17,14 +17,9 @@ export default function BlogService() {
   const getBlog = (slug) => http.get(`blogs/${slug}`);
   const createBlog = (data) => http.post("blogs", data);
   const updateBlog = (id, data) => http.put(`blogs/${id}`, data);
-  const deleteblog = (id) => http.delete(`blogs/${id}`);
+  const deleteblog = (slug) => http.delete(`deleteblog/${slug}`);
   //get personal blogs
-  const getYourBlog = (id) =>
-    http.get(`yourblog/${id}`, {
-      headers: {
-        Authorization: `Bearer ${getToken()}`,
-      },
-    });
+  const getYourBlog = (id) => http.get(`yourblog/${id}`);
 
   return {
     getBlog,

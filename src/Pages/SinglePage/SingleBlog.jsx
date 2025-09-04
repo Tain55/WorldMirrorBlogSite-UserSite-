@@ -4,6 +4,7 @@ import BlogService from "../../Component/BlogService/BlogService";
 
 const SingleBlog = () => {
   const { slug } = useParams();
+  const { getBlog } = BlogService();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,9 +12,10 @@ const SingleBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await BlogService().getBlog(slug);
+        const res = await getBlog(slug);
         setBlog(res.data);
       } catch (err) {
+        console.error("Error fetching blog:", err);
         setError("Blog not found!");
       } finally {
         setLoading(false);
