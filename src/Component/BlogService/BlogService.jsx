@@ -1,8 +1,8 @@
 import axios from "axios";
-// import AuthUser from "./../Auth/AuthUser";
+import AuthUser from "./../Auth/AuthUser";
 
 export default function BlogService() {
-  // const { getToken } = AuthUser();
+  const { getToken } = AuthUser();
   const http = axios.create({
     baseURL: "http://127.0.0.1:8000/api/",
     headers: {
@@ -18,6 +18,13 @@ export default function BlogService() {
   const createBlog = (data) => http.post("blogs", data);
   const updateBlog = (id, data) => http.put(`blogs/${id}`, data);
   const deleteblog = (id) => http.delete(`blogs/${id}`);
+  //get personal blogs
+  const getYourBlog = (id) =>
+    http.get(`yourblog/${id}`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
 
   return {
     getBlog,
@@ -25,5 +32,6 @@ export default function BlogService() {
     createBlog,
     updateBlog,
     deleteblog,
+    getYourBlog,
   };
 }
