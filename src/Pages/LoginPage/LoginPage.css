@@ -1,0 +1,58 @@
+
+/* Login Heading */
+.loginHeading{
+    text-align: center;
+    font-weight: 55
+    0;
+}
+
+/* Input box design */
+.custom-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db; /* light gray */
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Input focus effect */
+.custom-input:focus {
+  border-color: #4979eb;   /* highlight color */
+  box-shadow: 0 0 6px rgba(73, 121, 235, 0.4);
+}
+
+/* Placeholder design */
+.custom-input::placeholder {
+  color: #9ca3af; 
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* The whole form field */
+.formField{
+    max-width: 450px;
+    background-color: rgba(76, 128, 223, 0.053);
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 15px;
+}
+
+/* login button design */
+.LoginBtn{
+    background-color: #4979eb;
+    color: aliceblue;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+}

@@ -10,19 +10,30 @@ function BlogCard({ title, description, imageUrl, url }) {
     "https://www.thewall360.com/uploadImages/ExtImages/images1/def-638240706028967470.jpg";
 
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card
+      style={{
+        width: "18rem",
+        boxShadow: " 0px 5px 12px rgba(90, 90, 90, 0.31)",
+      }}
+    >
       <Card.Img
-        style={{ maxHeight: "150px", objectFit: "cover" }}
+        style={{ maxHeight: "140px", objectFit: "cover" }}
         src={imageUrl ? imageUrl : defaultImage}
       />
       <Card.Body>
-        <Card.Title className="text-truncate-2">{title}</Card.Title>
-        <Card.Text className="text-truncate-3">{description}</Card.Text>
-        <Row className="mt-2">
+        <Card.Title className="text-truncate-2 roboto-font">{title}</Card.Title>
+        <Card.Text
+          style={{ fontWeight: "350" }}
+          className="text-truncate-3 inter-font"
+        >
+          {description}
+        </Card.Text>
+        <Row className="mt-2 inter-font">
           <Button
             style={{
-              background: "linear-gradient(to right, #7d9722,  #cbd394)",
+              background: "linear-gradient(to right, #48C3EB, #718EDD)",
               border: "none",
+              fontWeight: "500",
             }}
             onClick={() => window.open(url, "_blank")}
           >

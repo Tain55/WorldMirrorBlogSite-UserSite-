@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import AuthUser from "./../../Component/Auth/AuthUser";
+import "../LoginPage/LoginPage.css";
 
 const RegisterPage = () => {
   const { http } = AuthUser();
@@ -35,25 +36,30 @@ const RegisterPage = () => {
 
   return (
     <Container className="mt-3">
-      <h1 className="mb-3">Registration Form</h1>
-      <form>
+      <form className="formField mt-5 mb-5 pb-5 ms-auto me-auto">
+        <h1 className="mt-3 mb- loginHeading poppins-semibold">Sign Up</h1>
         <div className="form-group">
-          <label>Name</label>
+          <label className="poppins-regular" style={{}}>
+            Your Name
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            placeholder="Enter your name"
+            placeholder="Name"
             onChange={(e) => setName(e.target.value)}
           />
-          <label>Email address</label>
+        </div>
+
+        <div className="form-group">
+          <label className="poppins-regular">Email address</label>
           <input
             type="email"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <small id="emailHelp" className="form-text text-muted">
@@ -62,10 +68,10 @@ const RegisterPage = () => {
         </div>
 
         <div className="form-group">
-          <label>Password</label>
+          <label className="poppins-regular">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputPassword1"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
@@ -73,27 +79,22 @@ const RegisterPage = () => {
         </div>
 
         <div className="form-group">
-          <label>Confirm Password</label>
+          <label className="poppins-regular">Confirm Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputPassword1"
             placeholder="Confirm Password"
             onChange={(e) => setconfirmPassword(e.target.value)}
           />
         </div>
 
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label">Check me out</label>
-        </div>
-
-        <button type="button" className="btn btn-primary" onClick={submitForm}>
-          Submit
+        <button
+          type="button"
+          className="LoginBtn poppins-semibold "
+          onClick={submitForm}
+        >
+          Sign Up
         </button>
       </form>
     </Container>

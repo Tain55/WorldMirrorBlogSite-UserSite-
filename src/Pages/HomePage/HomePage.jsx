@@ -1,10 +1,12 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import BlogCard from "../../Component/BlogCard/BlogCard";
-import { useEffect, useState } from "react";
+// import BlogCard from "../../Component/BlogCard/BlogCard";
+import { useState } from "react";
 import BlogList from "./../../Component/BlogService/BlogList";
+import TabBarBlogs from "../../Component/TabBarBlogs/TabBarBlogs";
 
 const HomePage = () => {
+  const [activeTab, setActiveTab] = useState(1);
   // const [articles, setArticles] = useState([]);
 
   // useEffect(() => {
@@ -20,6 +22,7 @@ const HomePage = () => {
 
   return (
     <Container className="mt-5">
+      <TabBarBlogs />
       <BlogList />
     </Container>
   );

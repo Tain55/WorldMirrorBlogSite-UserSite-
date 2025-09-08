@@ -29,36 +29,64 @@ const SingleBlog = () => {
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div className="container col-12 mt-3 mb-3">
+    <div className="container col-12 mt-3 mb-3 open-sans-font">
+      {/* the image */}
       <img
         className="col-12"
         style={{ maxHeight: "450px", objectFit: "cover" }}
         src={blog.image}
         alt=""
       />
-      <h1 className="mt-2">{blog.title}</h1>
-      <div className="col-12 d-flex justify-content-between">
+      {/* Heading of the blog */}
+      <h1 className="mt-2 merriweather-font mt-3">{blog.title}</h1>
+
+      {/* writer name */}
+      <div
+        className="col-12 d-flex justify-content-between inter-font"
+        style={{ color: "#074543ff" }}
+      >
         <div className="d-flex gap-1 ">
           <p>By </p>
           <p style={{ fontWeight: "bold" }}> {blog.user.name}</p>
         </div>
+
+        {/* Publishing Date */}
         <div className="d-flex gap-1">
-          In the category
-          <p style={{ fontWeight: "bold" }}> {blog.category.category_name}</p>
+          Published in{" "}
+          <p style={{ fontWeight: "bold" }}>
+            {new Date(blog.created_at).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
         </div>
       </div>
-      <div className="d-flex gap-1 mb-3" style={{ lineHeight: "0px" }}>
-        Published in:{" "}
-        <p style={{ fontWeight: "bold" }}>
-          {new Date(blog.created_at).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
-        </p>
+      <div className="mb-3 inter-font" style={{ color: "#074543ff" }}>
+        {/* Category Tag */}
+        <div
+          className="d-inline-flex align-items-center"
+          style={{
+            backgroundColor: "black",
+            borderRadius: "6px",
+            padding: "4px 10px",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: "bold",
+              color: "white",
+              margin: 0,
+              fontSize: "14px",
+            }}
+          >
+            {blog.category.category_name}
+          </p>
+        </div>
       </div>
 
-      <div>{blog.content}</div>
+      {/* the blog */}
+      <div style={{ fontSize: "18px" }}>{blog.content}</div>
     </div>
   );
 };

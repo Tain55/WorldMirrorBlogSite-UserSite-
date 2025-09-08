@@ -1,42 +1,63 @@
 /* Navbar main background */
 .navbar-custom {
-  background-color: #808080 !important;
+  background-color: #ffffff !important;
 }
 
 /* Dropdown toggle text color */
 .navbar-custom .dropdown-toggle {
-  color: white !important;
-  background-color: #808080 !important; /* optional, if you want bg for button */
+
+  color: rgb(57, 57, 57) !important;
+
+}
+.navbar-custom .dropdown-toggle::after {
+  display: none !important;
 }
 
 /* Dropdown menu background & text color */
 .navbar-custom .dropdown-menu {
-  background-color: #808080 !important;
+  /* background-color: #808080 !important; */
 }
 
 .navbar-custom .dropdown-item {
-  color: white !important;
+  color: rgb(38, 38, 38) !important;
 }
 
 /* Hover effect on dropdown items */
 .navbar-custom .dropdown-item:hover {
-  background-color: #666666 !important;
-  color: rgb(248, 255, 38) !important;
+  color: #4979eb !important;
+  background-color: transparent !important;
 }
 
 .navbar-custom .nav-link {
-  color: white !important;
+  color: rgb(38, 38, 38)  !important;
 }
 
 .navbar-custom .nav-link:hover {
-  color: rgb(248, 255, 38) !important;
+  color: #4979eb !important;
 }
 
-.navbar-custom .texttt{
-  color: #aeed26 !important;
+.navbar-custom .writeBlogButton{
+  background-color: #4979eb;
+  border-radius: 5px;
+  color: #ffffff !important;
+  font-weight: 550;
+  padding-left: 15px !important ;
+  padding-right: 15px !important ;
+  border: 1px solid #3873fd;
 }
-.navbar-custom .texttt:hover {
-  background: #aeed26 !important;
-  color: #2b2b2b !important;
+.navbar-custom .writeBlogButton:hover {
+  background: #ffffff !important;
+  color: #4979eb !important;
+  border: 1px solid ;
+  border-color: #4979eb;
 }
 
+
+/* buttons */
+.loginButton{
+  font-weight: 550;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.151);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}

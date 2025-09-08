@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import AuthUser from "./../../Component/Auth/AuthUser";
+import "../LoginPage/LoginPage.css";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const { http, setToken } = AuthUser();
@@ -25,47 +27,46 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="mt-3">
-      <h1 className="mb-3">Login Form</h1>
-      <form>
-        <div className="form-group">
-          <label>Email address</label>
+    <Container className="mt-3 ">
+      <form className="formField mt-5 ms-auto me-auto">
+        <h1 className="mt-3 mb-2 loginHeading poppins-semibold">Login</h1>
+        <div className="form-group ">
           <input
             type="email"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
 
         <div className="form-group">
-          <label>Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control custom-input"
             id="exampleInputPassword1"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label">Check me out</label>
-        </div>
-
-        <button type="button" className="btn btn-primary" onClick={submitForm}>
-          Submit
+        <button
+          type="button"
+          className="LoginBtn poppins-semibold "
+          onClick={submitForm}
+        >
+          Login
         </button>
+        <p style={{ textAlign: "center " }} className="inter-font">
+          Don't have an accout?{" "}
+          <Link
+            to="/registration"
+            style={{ textDecoration: "none", color: "#4979eb" }}
+          >
+            <span style={{ fontWeight: "bold" }}>Sign up</span>
+          </Link>
+        </p>
       </form>
     </Container>
   );

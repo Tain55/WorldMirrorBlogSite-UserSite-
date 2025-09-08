@@ -1,0 +1,36 @@
+.category-filter {
+  display: flex;
+  flex-direction: c;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #494949;
+}
+
+.category-filter label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.category-filter select {
+  width: 140px;
+  -webkit-appearance: none; /* Chrome, Safari */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;         /* Standard, removes arrow */
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 0px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  background-position: right 12px center;
+}
+
+.category-filter select:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.category-filter select:focus {
+  outline: none;
+}
