@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BlogService from "./../BlogService/BlogService";
+import "../TabBarBlogs/TabBarBLogs.css";
+import CategoryBlogCard from "../BlogCard/CategoryBlogCard/CategoryBlogCard";
 
 const TabBarBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -34,10 +36,10 @@ const TabBarBlogs = () => {
   return (
     <div className="container mt-4">
       {/* Category Tab Bar */}
-      <div className="d-flex gap-3 mb-4">
+      <div className="d-flex gap-0 ">
         <button
           className={`btn ${
-            activeCategory === "All" ? "btn-primary" : "btn-outline-primary"
+            activeCategory === "All" ? "activeButton" : "inActiveButton"
           }`}
           onClick={() => setActiveCategory("All")}
         >
@@ -47,7 +49,7 @@ const TabBarBlogs = () => {
           <button
             key={idx}
             className={`btn ${
-              activeCategory === cat ? "btn-primary" : "btn-outline-primary"
+              activeCategory === cat ? "activeButton" : "inActiveButton"
             }`}
             onClick={() => setActiveCategory(cat)}
           >
@@ -56,22 +58,23 @@ const TabBarBlogs = () => {
         ))}
       </div>
 
+      <div className="w-100 bg-primary mb-2" style={{ height: ".5px" }}></div>
+
       {/* Blogs list */}
-      <div className="d-flex flex-column gap-3">
+      <div className="row g-3">
         {filteredBlogs.length === 0 ? (
-          <p>No blogs found in this category</p>
+          <p className="text-center text-muted">
+            No blogs found in this category
+          </p>
         ) : (
-          filteredBlogs.map((blog) => (
-            <div
-              key={blog.id}
-              className="p-3 border rounded shadow-sm"
-              style={{ background: "#fff" }}
-            >
-              <h5>{blog.title}</h5>
-              <p>{blog.content.slice(0, 120)}...</p>
-              <small style={{ color: "gray" }}>
-                Category: {blog.category?.category_name}
-              </small>
+          [...filteredBlogs].reverse().map((blog) => (
+            <div key={blog.id} className="col-12 col-md-6">
+              <CategoryBlogCard
+                title={blog.title}
+                content={blog.content}
+                image={blog.image}
+                slug={blog.slug}
+              />
             </div>
           ))
         )}

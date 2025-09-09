@@ -7,6 +7,7 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import RegisterPage from "./Pages/RegistrationPage/RegisterPage";
 import WriteBlog from "./Pages/WriteBlog/WriteBlog";
 import SingleBlog from "./Pages/SinglePage/SingleBlog";
+import FooterView from "./Component/Footer/FooterView";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/writing-blog" element={<WriteBlog />} />
           <Route path="/blog/:slug" element={<SingleBlog />} />
         </Routes>
+        <FooterView />
       </BrowserRouter>
     </>
   );

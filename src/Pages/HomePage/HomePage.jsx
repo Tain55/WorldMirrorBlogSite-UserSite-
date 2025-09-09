@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import BlogList from "./../../Component/BlogService/BlogList";
 import TabBarBlogs from "../../Component/TabBarBlogs/TabBarBlogs";
+import QuoteAndSearch from "./../../Component/QuoteAndSearch/QuoteAndSearch";
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -22,6 +23,7 @@ const HomePage = () => {
 
   return (
     <Container className="mt-5">
+      <QuoteAndSearch />
       <TabBarBlogs />
       <BlogList />
     </Container>
