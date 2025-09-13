@@ -204,7 +204,8 @@ const ProfilePage = () => {
               </div>
             ) : (
               <div className="d-flex flex-column gap-2">
-                {blogs
+                {[...blogs]
+                  .reverse()
                   .filter(
                     (blog) =>
                       selectedCategory

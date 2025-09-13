@@ -26,8 +26,33 @@ const CategoryBlogCard = ({ title, content, image, slug }) => {
 
       {/* Text content */}
       <div className="flex-grow-1 d-flex flex-column justify-content-center">
-        <h5 className="mb-2">{title}</h5>
-        <p className="text-muted mb-0">{content.slice(0, 110)}...</p>
+        <div
+          className="roboto-font mb-2 "
+          style={{ fontSize: "20px", fontWeight: "bold" }}
+        >
+          {title}
+        </div>
+        <p
+          className="text-muted open-sans-font mb-0"
+          style={{ fontWeight: "400" }}
+        >
+          {content.slice(0, 110)}...
+        </p>
+        {/* <div className="d-flex gap-2 align-items-center">
+          <img
+            src="https://img.freepik.com/free-photo/smart-looking-teacher_53876-23045.jpg?semt=ais_hybrid&w=740&q=80"
+            style={{
+              height: "50px",
+              width: "50px",
+              objectFit: "cover",
+              borderRadius: "50%",
+            }}
+          />
+          <div className="fw-bold" style={{ fontSize: "15px" }}>
+            {name}
+            Tauhidul Islam
+          </div>
+        </div> */}
       </div>
     </div>
   );

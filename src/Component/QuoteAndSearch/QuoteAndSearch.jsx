@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import QuoteService from "../QuoteService/QuoteService";
 import "./QuoteAndSearch.css"; // fade-in/out CSS
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const QuoteAndSearch = () => {
   const { getQuotes } = QuoteService();
   const [quotes, setQuotes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0); // current quote
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getQuotes()
@@ -28,6 +31,13 @@ const QuoteAndSearch = () => {
         setLoading(false);
       });
   }, []);
+
+  //handleSearch function
+  const handleSearch = async () => {
+    if (!query.trim()) return;
+
+    navigate(`/search?q=${query}`);
+  };
 
   // cycle through quotes every 5s
   useEffect(() => {
@@ -85,6 +95,9 @@ const QuoteAndSearch = () => {
             <input
               type="text"
               placeholder="Search..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               style={{
                 border: "none",
                 outline: "none",
@@ -94,6 +107,7 @@ const QuoteAndSearch = () => {
               }}
             />
             <button
+              onClick={handleSearch}
               style={{
                 background: "transparent",
                 border: "none",
